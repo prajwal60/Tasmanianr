@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+ 
+ 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home | Jon's Reserve</title>
+    {% load static %}
+   <link rel="stylesheet" href="{% static "css/style.css" %}">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors    : {
+            primary         : '#F4CA0C',
+            "dark"          : "#27272A",
+            "dark-secondary": "#93939e"
+          },
+          fontFamily: {
+            cursive: ['cursive']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .dancing-script-header {
+      font-family: "Dancing Script", cursive;
+      font-optical-sizing: auto;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    p {
+      font-family: "Avenir", sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="fixed top-0 z-50 w-full text-white transition-colors duration-300" id="nav-bar-container">
+    <nav class="container flex items-start justify-end px-4 py-4 mx-auto">
+      <img src="{% static './images/hero-index-1.png' %}" alt="Logo" class="absolute w-24 left-4 h-36" />
+
+      <div class="space-x-9">
+        <a href="{% url "hello" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">Home</a>
+        <a href="{% url "about" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">About Us</a>
+        <a href="{% url "recepie" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">Our Recipe</a>
+        <a href="{% url "contact" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">Contact Us</a>
+        <a href="{% url "reserve" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">
+          Our Reserve
+        </a>
+
+        <!-- Search input -->
+        <div class="relative inline-block group">
+        <form action="result" method="get" class="relative inline">
+          <input type="text" placeholder="Search" name="search"
+                class="px-4 py-2 pr-10 text-sm bg-transparent border rounded-full border-inherit focus:outline-none focus:ring focus:border-blue-200"
+                id="search-input"/>
+          <i class="absolute transform -translate-y-1/2 fa-solid fa-magnifying-glass right-3 top-1/2"></i>
+        </form>
+
+        <!-- Search Result -->
+        <div
+          class="absolute right-0 hidden w-auto text-white transition-all opacity-0 top-full min-w-96 group-focus-within:opacity-100 group-focus-within:block">
+          <div class="bg-gray-700 rounded-md p-1.5 mt-1 divide-y divide-gray-500" id="search-results">
+            <span>No Search Result</span>
+          </div>
+        </div>
+        <!-- Search Result End -->
+      </div>
+        <!-- End of Search input -->
+      </div>
+    </nav>
+  </header>
+<div class="flex" style="height: 80vh;">
+
+  <div class="w-2/5 bg-[#F2F0EC] flex flex-col h-screen" style="height: 80vh;">
+
+    <div class="h-1/3 relative w-full">
+      
+      <img src="{% static './images/hero-index-label.png' %}" alt="Second Image" class="h-52 absolute left-1/2 -translate-x-1/2 ">
+    </div>
+
+    <!-- Lower div with one image -->
+    <div class="h-2/3 flex items-center justify-center flex-grow">
+      <img src="{% static './images/hero-index.png' %}" alt="Third Image" class="w-ful h-full justify-center items-center">
+    </div>
+    <!--    <img class="min-h-full" src="./images/hero-index.png" alt="image description">-->
+  </div>
+
+
+  <div class="w-3/5">
+    <section class="bg-white hero-section">
+      <div class="flex flex-col items-center justify-center h-screen">
+        <!-- Header -->
+        <header class="mb-12 ">
+          <h1 class="text-3xl font-bold dancing-script-header">With All Our Experience <span class="text-primary">We
+                Serve You</span> The Best Oyster
+          </h1>
+        </header>
+
+        <!-- Text content -->
+        <div class="max-w-lg mb-8 text-center">
+          <p class="text-lg leading-snug text-center text-gray-700">We’ve teamed up with renowned oyster farming
+            families in Port Stephens, to
+            bring you what we think are the best Sydney Rock and Pacific Oysters in NSW.
+          </p>
+        </div>
+
+        <!-- Button -->
+        <div class="mb-8">
+          <div class="px-12 py-4 my-3 border-t-2 border-r-2 border-yellow-500 rounded text-dark hover:bg-blue-600"
+               style="border-radius: 25px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.43));
+             background: white; ">
+            Explore the Journey
+          </div>
+
+        </div>
+
+        <!-- Pictures -->
+        <div class="flex items-center gap-10 mb-8 justify-auto">
+          <div class="flex flex-col items-center justify-center gap-6">
+            <div class="relative overflow-hidden cursor-pointer">
+              <img src="{% static './images/pexels-taryn-elliott-4457126.jpg' %}" alt="Image 1"
+                   class="w-48 h-48 border-t-4 border-r-4 border-yellow-500 rounded-full transition-transform duration-500 transform hover:scale-110 hover:translate-x-1/2 hover:translate-y-1/2">
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-500 bg-black bg-opacity-50 rounded-full">
+                <span class="text-white text-lg font-bold">Oyster</span>
+              </div>
+            </div>
+            <hr style="width:30%;" class="bg-primary h-1.5 rounded">
+          </div>
+
+          <div class="flex flex-col items-center justify-center gap-6">
+            <div class="relative overflow-hidden cursor-pointer">
+              <img src="{% static './images/pexels-taryn-elliott-4457125.jpg' %}" alt="Image 1"
+                   class="w-48 h-48 border-t-4 border-r-4 border-yellow-500 rounded-full transition-transform duration-500 transform hover:scale-110 hover:translate-x-1/2 hover:translate-y-1/2">
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-500 bg-black bg-opacity-50 rounded-full">
+                <span class="text-white text-lg font-bold">Oyster</span>
+              </div>
+            </div>
+            <hr style="width:30%;" class="bg-primary h-1.5 rounded">
+          </div>
+
+          <div class="flex flex-col items-center justify-center gap-6">
+            <div class="relative overflow-hidden cursor-pointer">
+              <img src="{% static './images/oy1.jpg' %}" alt="Image 1"
+                   class="w-48 h-48 border-t-4 border-r-4 border-yellow-500 rounded-full transition-transform duration-500 transform hover:scale-110 hover:translate-x-1/2 hover:translate-y-1/2">
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-500 bg-black bg-opacity-50 rounded-full">
+                <span class="text-white text-lg font-bold">Oyster</span>
+              </div>
+            </div>
+            <hr style="width:30%;" class="bg-primary h-1.5 rounded">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="mx-36 mt-12">
+  <div class="flex">
+    <div class="w-3/5 mr-10">
+      <h1 class="text-3xl font-semibold dancing-script-header mb-8">
+        <span class="border-b-2 border-primary">The freshest</span>, expertly prepared oysters for restaurants and pubs.
+      </h1>
+
+      <p class="text-xl">
+        We’ve teamed up with renowned oyster farming families in Port Stephens, to bring you what we think are the best
+        Sydney Rock and Pacific Oysters in NSW.
+      </p>
+      <p class="text-xl">
+        We’ve teamed up with renowned oyster farming families in Port Stephens, to bring you what we think are the best
+        Sydney Rock and Pacific Oysters in NSW.
+      </p>
+      <div>
+        <div
+          class="px-4 py-4 text-dark text-center rounded hover:bg-blue-600 my-3 border-t-2 border-r-2 border-yellow-500"
+          style="border-radius: 25px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.43));
+             background: white; width: 30% ">
+          <a href="{% url "recepie" %}">Watch How We Cook</a>
+        </div>
+      </div>
+    </div>
+    <div class="w-2/5 pb-20">
+
+      <div class="grid grid-cols-5 gap-10 items-center">
+        <div class="col-span-1 flex justify-center items-center">
+          <div class="border-r h-24 bg-primary w-2 rounded"></div>
+        </div>
+        <div class="col-span-4">
+          <div class="relative">
+            <video autoplay loop class="w-full" controls>
+              <source src="{% static './images/video-1.mp4' %}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="absolute top-0 left-0 m-4 text-white text-sm bg-black bg-opacity-50 px-2 py-1 rounded">Click to
+              Play
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="relative h-150 w-full">
+    <div class="col-span-4">
+      <div class="relative">
+        <video autoplay loop class="w-full" height="150" controls >
+          <source src="{% static './images/13564829-hd_1920_1080_25fps.mp4' %}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="absolute top-0 left-0 m-4 text-white text-sm bg-black bg-opacity-50 px-2 py-1 rounded">Click to
+          Play
+        </div>
+      </div>
+    </div>
+    
+    <!--    <div-->
+    <!--      class="px-4 py-4 text-dark text-center rounded hover:bg-blue-600 my-3 border-t-2 border-r-2 border-yellow-500"-->
+    <!--      style="border-radius: 25px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.43));-->
+    <!--             background: white; width: 30% ">-->
+    <!--      Discover the Range of Oysters with us-->
+    <!--    </div>-->
+
+    <div style="border-radius: 25px; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.43));
+             background: white; width: 30%"
+         class=" dancing-script-header text-dark text-xl text-center rounded hover:bg-blue-600 border-t-2 border-r-2 border-yellow-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 hover:bg-blue-700 font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline">
+     <a href="{% url "recepie" %}"> Discover the Range of Oysters with us</a>
+    </div>
+  </div>
+  <div class="mt-12 mx-16 flex align-center justify-center text-xl">
+    <p class="">
+      Our 160 acre intertidal farm on Tomales Bay is home to several different types of oysters we grow and harvest.
+      <br> The
+      Pacific oyster, our Sweetwater, is the star of our show and harvested year round. Our other oyster varieties <br>
+      are a
+      labor of love really, harvested seasonally and as ‘special occasion’, to provide you with a unique sampling <br>
+      <span class="border-b-2 border-primary"> of the simplest p</span>leasures in life.
+    </p>
+  </div>
+
+  <div class="flex items-center mt-12">
+    <div class="flex-1 mr-4" style="height: 300px; position: relative;">
+      <img src="{% static './images/oysterglove.jpg' %}" alt="Image 1" class="rounded-lg object-cover w-full h-full">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <span class="text-white text-xl font-bold dancing-script-header"><a href="{% url "recepie" %}">Make a Delicious oyster with us<a/></span>
+      </div>
+    </div>
+    <div class="col-span-1 flex justify-center items-center">
+      <div class="border-r h-24 bg-primary w-2 rounded"></div>
+    </div>
+    <div class="flex-1 ml-4" style="height: 300px; position: relative;">
+      <img src="{% static './images/pexels-rachel-claire-4846502.jpg' %}" alt="Image 2" class="rounded-lg object-cover w-full h-full">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <a href="{% url "reserve" %}"><span class="text-white text-xl font-bold dancing-script-header ">Visit Us
+        </span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center mt-12 relative">
+    <div class="flex-1 mr-4 relative" style="height: 300px; position: relative;">
+      <video autoplay loop class="w-full object-cover rounded-lg" controls style="height:  300px">
+        <source src="{% static './images/pexels_videos_water_running.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="flex flex-col">
+          <p class="text-dark text-xl font-extrabold dancing-script-header">Sustainable Farming </p>
+          <p class="text-dark text-lg font-bold dancing-script-header">Farming for a better planet.
+          <div class="flex mx-8 rounded-full bg-white px-2">
+            <p class="text-dark  text-lg font-bold dancing-script-header"> Explore More
+              <span>
+                <i class="fa fa-heart text-primary" aria-hidden="true"></i>
+
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-12 max-w-md mx-auto flex flex-col items-center justify-center">
+    <div class="flex items-center justify-center">
+      <h1 class="font-bold text-5xl">FROM THE SEA</h1>
+    </div>
+    <div class="flex items-center justify-center mt-2 w-[600px]">
+      <hr style="width:30%;" class="bg-primary h-1.5 rounded">
+      <span class="mx-4 text-gray-600 font-bold text-xl">TO YOUR PLATE</span>
+      <hr style="width:30%;" class="bg-primary h-1.5 rounded">
+    </div>
+    <div class="flex items-center justify-center mt-2 w-[600px] px-2">
+
+      <p>
+        If you’re looking for the best way to cook oysters, you’ve come to the right place! Our oyster-serving section
+        provides you with a variety of cooking methods to choose from, including steaming, roasting, grilling, and even
+        frying. Whether you’re a seasoned chef or a beginner, we have something for everyone. So come and explore the
+        world of oyster cuisine with us!
+
+      </p>
+    </div>
+  </div>
+
+  <div class="flex items-center mt-12 relative group">
+    <div class="flex-1 mr-4 relative">
+      <video autoplay loop class="w-full object-cover rounded-lg" style="height: 500px;">
+        <source src="{% static './images/pexels_videos_water_running.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div
+        class="text-container flex items-center justify-center absolute bottom-0 h-[40px] px-4 w-full bg-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-[15px]">
+        <p class="text-black bg-primary text-center font-extrabold text-xl">EXPLORE MORE FOR MORE RECIPES</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center mt-12">
+    <hr style="width:30%;" class="bg-primary h-1.5 rounded">
+    <div style="border-radius: 25px;
+            width: 30%"
+         class="dancing-script-header text-dark text-3xl text-center rounded font-bold focus:outline-none focus:shadow-outline">
+      Discover our Product Spec Over Market
+    </div>
+    <hr style="width:30%;" class="bg-primary h-1.5 rounded">
+  </div>
+  <div>
+    <div class="grid grid-cols-2 gap-8 mt-12">
+      <div  class="flex flex-col justify-center items-center">
+        
+      <img src="{% static './images/retail1.jpg' %}" alt="Image 1" class="border-t-2 border-r-2 border-yellow-500 rounded-[30px]">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <span class="text-white text-xl font-bold dancing-script-header"><a href="{% url "retail" %}">Retail<a/></span>
+      
+    </div>
+        <h2  class="text-center mt-2 text-xl font-extrabold"><a href="{% url "retail" %}">RETAIL STORE</a></h2>
+      </div>
+       <div  class="flex flex-col justify-center items-center">
+        
+      <img src="{% static './images/wholesale.jpg' %}" alt="Image 1" class="border-t-2 border-r-2 border-yellow-500 rounded-[30px]">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <span class="text-white text-xl font-bold dancing-script-header"><a href="{% url "retail" %}">Wholesale<a/></span>
+      
+    </div>
+        <h2  class="text-center mt-2 text-xl font-extrabold"><a href="{% url "wholesale" %}">Whole Sale</a></h2>
+      </div>
+       <div  class="flex flex-col justify-center items-center">
+        
+      <img src="{% static './images/restaurant.jpg' %}" alt="Image 1" class="border-t-2 border-r-2 border-yellow-500 rounded-[30px]">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <span class="text-white text-xl font-bold dancing-script-header"><a href="{% url "retail" %}">Restaurant<a/></span>
+      
+    </div>
+        <h2  class="text-center mt-2 text-xl font-extrabold"><a href="{% url "restaurant" %}">Restaurant</a></h2>
+      </div>
+       <div  class="flex flex-col justify-center items-center">
+        
+      <img src="{% static './images/export.jpg' %}" alt="Image 1" class="border-t-2 border-r-2 border-yellow-500 rounded-[30px]">
+      <div class="absolute inset-0 flex items-center justify-center">
+        <span class="text-white text-xl font-bold dancing-script-header"><a href="{% url "export" %}">Export<a/></span>
+      
+    </div>
+        <h2  class="text-center mt-2 text-xl font-extrabold"><a href="{% url "retail" %}">Export</a></h2>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mt-12 max-w-md mx-auto flex flex-col items-center justify-center">
+    <div class="flex items-center justify-center">
+      <h1 class="font-bold text-2xl">VIEW OUR GALLERY</h1>
+    </div>
+    <div class="flex items-center justify-center mt-2 w-[900px]">
+      <hr style="width:30%;" class="bg-primary h-1.5 rounded">
+      <span class="mx-4 text-gray-600 font-bold text-md">COLLECTIONS OF ALL THE MEMORIES</span>
+      <hr style="width:30%;" class="bg-primary h-1.5 rounded">
+    </div>
+
+
+    <div class="flex flex-col justify-center items-center">
+
+      <!-- Parent Container -->
+      <div class="flex">
+
+        <!-- Top Row -->
+        <div class="w-1/2">
+          <div class=" h-full rounded flex justify-center items-center w-[300px]">
+            <a data-fslightbox="gallery" href="{% static 'images/oy1.jpg' %}">
+            <img src="{% static 'images/oy1.jpg' %}" alt=""  class="transition-transform duration-300 transform hover:scale-110"/>
+          </div>
+        </div>
+        <div class="w-1/2 p-2">
+          <div class="h-full rounded flex justify-center items-center w-[300px]">
+            <a data-fslightbox="gallery" href="{% static 'images/oy2.jpg' %}">
+            <img src="{% static 'images/oy2.jpg' %}"  class="transition-transform duration-300 transform hover:scale-110"/>
+          </div>
+        </div>
+
+        <div class="w-1/2 p-2">
+          <div class=" h-full rounded flex justify-center items-center w-[300px]">
+            <a data-fslightbox="gallery" href="{% static 'images/oy3.jpg' %}">
+            <img src="{% static 'images/oy3.jpg' %}"  class="transition-transform duration-300 transform hover:scale-110"/>
+          </div>
+        </div>
+        <div class="w-1/2 p-2">
+          <div class=" h-full rounded flex justify-center items-center w-[300px]">
+            <a data-fslightbox="gallery" href="{% static 'images/oy4.jpg' %}">
+            <img src="{% static 'images/oy4.jpg' %}"  class="transition-transform duration-300 transform hover:scale-110"/>
+          </div>
+        </div>
+
+      </div>
+      <div class="flex">
+        <!-- Bottom Row -->
+        <div class="w-1/2">
+          <div class=" h-full rounded flex justify-center items-center w-[300px]">
+            <a data-fslightbox="gallery" href="{% static 'images/oy5.jpg' %}">
+              <img src="{% static 'images/oy5.jpg' %}" alt="" class="transition-transform duration-300 transform hover:scale-110"/>
+            </a>
+          </div>
+        </div>
+        <div class="w-1/2 p-2">
+          <a data-fslightbox="gallery" href="{% static 'images/oy6.jpg' %}">
+            <img src="{% static 'images/oy6.jpg' %}"  class="transition-transform duration-300 transform hover:scale-110"/>
+          </a>
+        </div>
+
+        <div class="w-1/2 p-2">
+          <div class=" h-full rounded flex justify-center items-center w-[300px]">
+            <a data-fslightbox="gallery" href="{% static 'images/oy7.jpg' %}">
+            <img src="{% static 'images/oy7.jpg' %}"  class="transition-transform duration-300 transform hover:scale-110"/>
+          </div>
+        </div>
+        <div class="w-1/2 p-2">
+          <div class=" h-full rounded flex justify-center items-center w-[300px]">
+            <a data-fslightbox="gallery" href="{% static 'images/oy8.jpg' %}">
+            <img src="{% static 'images/oy8.jpg' %}"  class="transition-transform duration-300 transform hover:scale-110"/>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+ <!-- Video Player Modal -->
+  <div class="fixed inset-0 z-50 video-player-container !hidden">
+    <div class="absolute inset-0 z-10 bg-black opacity-60 video-player-overlay"></div>
+    <div class="flex flex-col items-center justify-center w-full h-full">
+      <iframe width="560" height="315" id="video-player-embed" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="z-10 rounded-md"></iframe>
+
+      <p class="z-10 mx-auto mt-2 text-xs text-white w-[540px]" id="video-player-label"></p>
+    </div>
+  </div>
+  <footer class="text-white text-center text-lg-start bg-black">
+  <!-- Grid container -->
+  <div class=" p-4">
+    <!--Grid row-->
+    <div class="row mt-4">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-4">About company</h5>
+
+        <p>
+          I've sold cars & real estate, harvested vegetables, owned a service station and a men's wear store. I'm a
+          boiler-maker-welder by trade and I've built and raced speedway cars but none of that comes close to the
+          excitement and challenge of nurturing the perfect oyster in the bone-snapping cold, wet and wild waters of
+          Tasmania.
+        </p>
+
+        <p>
+
+          I've been patiently developing a unique farming technique; I've failed more often than I care to remember and
+          after some 30 odd years of blood, sweat and tears, I've finally nailed it.
+        </p>
+
+        <div class="mt-4">
+          <!-- Facebook -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-facebook-f"></i></a>
+          <!-- Dribbble -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-dribbble"></i></a>
+          <!-- Twitter -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-twitter"></i></a>
+          <!-- Google + -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-google-plus-g"></i></a>
+          <!-- Linkedin -->
+        </div>
+      </div>
+
+      <div class="contact-info d-flex flex-column align-items-center">
+        <div class="contact-item d-flex align-items-center mb-3">
+          <i class="fas fa-home"></i>
+          <span class="ms-2">Tasmania, +61 3 6248 9441, Australia</span>
+        </div>
+
+        <div class="contact-item d-flex align-items-center mb-3">
+          <i class="fas fa-envelope"></i>
+          <span class="ms-2">info@tasmanianoysterco.com.au</span>
+        </div>
+
+        <div class="contact-item d-flex align-items-center mb-3">
+          <i class="fas fa-phone"></i>
+          <span class="ms-2">+61 3 6248 9441</span>
+        </div>
+      </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <!-- Center the content within a parent div -->
+    <!-- Parent container with centered content -->
+    <div class=" text-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Opening hours</h5>
+
+          <!-- Opening hours list using flexbox for alignment -->
+          <div class="d-flex flex-column align-items-center">
+            <div class="d-flex justify-content-between w-100"> <!-- Flexbox to spread content -->
+              <span>Mon - Thu:</span>
+              <span>8am - 9pm</span>
+            </div>
+            <div class="d-flex justify-content-between w-100">
+              <span>Fri - Sat:</span>
+              <span>8am - 1am</span>
+            </div>
+            <div class="d-flex justify-content-between w-100">
+              <span>Sunday:</span>
+              <span>9am - 10pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2024 Copyright:
+    <a class="text-white">TasmanianOyster.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+  <!-- Video Player Modal End -->
+<script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+<script src="{% static "js/app.js" %}"></script>
+
+  </body>
+</html>

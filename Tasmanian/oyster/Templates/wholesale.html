@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+{% load static %}
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wholesale</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <meta name="description" content="" />
+
+  <meta property="og:title" content="" />
+
+  <meta property="og:type" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
+
+  <link rel="icon" href="{% static '/favicon.ico' %}" sizes="any" />
+  <link rel="icon" href="{% static '/icon.svg' %}" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon.png" />
+
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#fafafa" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#F4CA0C",
+            dark: "#27272A",
+            "dark-secondary": "#6c6d73",
+          },
+          fontFamily: {
+            cursive: ["cursive"],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .dancing-script-header {
+      font-family: "Dancing Script", cursive;
+      font-optical-sizing: auto;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .roboto-mono-header {
+      font-family: "Avenir", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 700;
+      font-style: normal;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="fixed top-0 z-50 w-full text-white transition-colors duration-300" id="nav-bar-container">
+    <img src="{% static './images/hero-index-1.png' %}" alt="Logo" class="absolute w-24 left-4 h-36" />
+
+      <div class="space-x-9">
+        <a href="{% url "hello" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">Home</a>
+        <a href="{% url "about" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">About Us</a>
+        <a href="{% url "recepie" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">Our Recipe</a>
+        <a href="{% url "contact" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">Contact Us</a>
+        <a href="{% url "reserve" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">
+          Our Reserve
+        </a>
+
+        <!-- Search input -->
+        <div class="relative inline-block group">
+        <form action="result" method="get" class="relative inline">
+          <input type="text" placeholder="Search" name="search"
+                class="px-4 py-2 pr-10 text-sm bg-transparent border rounded-full border-inherit focus:outline-none focus:ring focus:border-blue-200"
+                id="search-input"/>
+          <i class="absolute transform -translate-y-1/2 fa-solid fa-magnifying-glass right-3 top-1/2"></i>
+        </form>
+
+        <!-- Search Result -->
+        <div
+          class="absolute right-0 hidden w-auto text-white transition-all opacity-0 top-full min-w-96 group-focus-within:opacity-100 group-focus-within:block">
+          <div class="bg-gray-700 rounded-md p-1.5 mt-1 divide-y divide-gray-500" id="search-results">
+            <span>No Search Result</span>
+          </div>
+        </div>
+        <!-- Search Result End -->
+      </div>
+        <!-- End of Search input -->
+      </div>
+    </nav>
+  </header>
+
+  <div class="z-0">
+    <!-- Start of Banner -->
+    <div class="w-full h-[85vh] overflow-hidden relative flex items-center justify-center">
+      <div class="z-10 text-center text-white">
+        <h1 class="dancing-script-header text-7xl">Wholesale</h1>
+        <span class="block mt-1 text-5xl transition-all hover:translate-y-2"><i class="fa fa-arrow-down"></i></span>
+      </div>
+
+      <div class="absolute inset-0 w-full">
+        <div class="absolute w-full h-full opacity-50 bg-amber-700"></div>
+        <img src="{% static './images/retail/banner.png' %}" class="object-cover w-full h-full pointer-events-none mix-blend-darken" />
+      </div>
+    </div>
+    <!-- End of Banner -->
+
+    <!-- Section 1 -->
+    <div class="mt-6 mb-20">
+      <div class="text-4xl tracking-wide text-center roboto-mono-header">
+        <span>Get All Our</span>
+        <span class="text-amber-500">Premium Oysters</span>
+        <span>At Your Wholesale Store</span>
+      </div>
+
+      <div
+        class="flex flex-row items-center justify-start w-full gap-5 px-4 mt-6 overflow-x-scroll flex-nowrap no-scrollbar">
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-1.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-2.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-3.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-4.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-5.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-1.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-2.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-3.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-4.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+        <div class="w-64 overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+          <img src="{% static './images/retail/gallery-5.jpg' %}"
+            class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+        </div>
+      </div>
+    </div>
+    <!-- Section 1 -->
+
+    <!-- Section 2 -->
+    <div class="container px-20 mx-auto mt-6 mb-20">
+      <div class="grid grid-cols-2 gap-12 lg:grid-cols-3 md:gap-20">
+        <div class="font-serif text-center">
+          <div class="overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+            <img src="{% static './images/retail/product-1.jpg' %}"
+              class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+          </div>
+          <p class="text-xl font-semibold mt-0.5">ROCKEFELLER</p>
+          <p class="text-sm">6 OVEN READY TASMANIAN</p>
+          <p class="text-md">PACIFIC OYSTERS TOPPED WITH A CREAMY GARLIC, SPINACH & CHEESE SAUCE</p>
+          <button  class="px-5 py-2 mt-1 font-semibold text-black rounded-lg hover:opacity-80 bg-amber-500">
+           <a href="{% static 'images/recepie/rockfeller.pdf' %}" target="_blank">View Product Spec</a> 
+          </button>
+        </div>
+
+        <div class="font-serif text-center">
+          <div class="overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+            <img src="{% static './images/retail/roc.jpeg' %}"
+              class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+          </div>
+          <p class="text-xl font-semibold mt-0.5">PARMIGANA</p>
+          <p class="text-sm">6 OVEN READY TASMANIAN</p>
+          <p class="text-md">PACIFIC OYSTERS TOPPED WITH A CREAMY GARLIC, SPINACH & CHEESE SAUCE</p>
+          <button class="px-5 py-2 mt-1 font-semibold text-black rounded-lg hover:opacity-80 bg-amber-500">            
+            <a href="{% static 'images/recepie/Parmigiana.pdf' %}" target="_blank">View Product Spec</a>
+          </button>
+        </div>
+
+        <div class="font-serif text-center">
+          <div class="overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+            <img src="{% static './images/retail/prem2.jpeg' %}"
+              class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+          </div>
+          <p class="text-xl font-semibold mt-0.5">KILPATRICK</p>
+          <p class="text-sm">6 OVEN READY TASMANIAN</p>
+          <p class="text-md">PACIFIC OYSTERS TOPPED WITH A CREAMY GARLIC, SPINACH & CHEESE SAUCE</p>
+          <button class="px-5 py-2 mt-1 font-semibold text-black rounded-lg hover:opacity-80 bg-amber-500">
+            <a href="{% static 'images/recepie/Kilpatrick.pdf' %} " target="_blank" >View Product Spec</a>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-12 mt-10 lg:grid-cols-3 md:gap-24">
+        <div class="font-serif text-center">
+          <div class="overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+            <img src="{% static './images/retail/prem1.jpeg' %}"
+              class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+          </div>
+          <p class="text-xl font-semibold mt-0.5">PREMIUM OYSTERS</p>
+          <p class="text-sm">6 OVEN READY TASMANIAN</p>
+          <p class="text-md">PACIFIC OYSTERS TOPPED WITH A CREAMY GARLIC, SPINACH & CHEESE SAUCE</p>
+          <button class="px-5 py-2 mt-1 font-semibold text-black rounded-lg hover:opacity-80 bg-amber-500">
+             <a href="{% static 'images/recepie/Frozen.pdf' %}" target="_blank">View Product Spec</a>
+          </button>
+        </div>
+
+        <div class="font-serif text-center">
+          <div class="overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+            <img src="{% static './images/retail/Rockfeller.jpeg' %}"
+              class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+          </div>
+          <p class="text-xl font-semibold mt-0.5">TERKINE OYSTERS</p>
+          <p class="text-sm">6 OVEN READY TASMANIAN</p>
+          <p class="text-md">PACIFIC OYSTERS TOPPED WITH A CREAMY GARLIC, SPINACH & CHEESE SAUCE</p>
+          <button class="px-5 py-2 mt-1 font-semibold text-black rounded-lg hover:opacity-80 bg-amber-500">
+             <a href="{% static 'images/recepie/Frozen2.pdf' %}" target="_blank">View Product Spec</a>
+          </button>
+        </div>
+
+        <div class="font-serif text-center">
+          <div class="overflow-hidden shadow-md shrink-0 rounded-xl h-72">
+            <img src="{% static './images/retail/product-2.jpg' %}"
+              class="object-cover w-full h-full transition-all hover:scale-105 will-change-transform" />
+          </div>
+          <p class="text-xl font-semibold mt-0.5">PREMIUM OYSTERS</p>
+          <p class="text-sm">6 OVEN READY TASMANIAN</p>
+          <p class="text-md">PACIFIC OYSTERS TOPPED WITH A CREAMY GARLIC, SPINACH & CHEESE SAUCE</p>
+          <button class="px-5 py-2 mt-1 font-semibold text-black rounded-lg hover:opacity-80 bg-amber-500">
+             <a href="{% static 'images/recepie/Frozen3.pdf' %}" target="_blank" >View Product Spec</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Section 2 -->
+  </div>
+
+  <!-- Video Player Modal -->
+  <div class="fixed inset-0 z-50 video-player-container !hidden">
+    <div class="absolute inset-0 z-10 bg-black opacity-60 video-player-overlay"></div>
+    <div class="flex flex-col items-center justify-center w-full h-full">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Rq8Nl9jPTNY?si=IxgFXeiB7u7hNWNC"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="z-10 rounded-md"></iframe>
+
+      <p class="z-10 mt-2 text-xs text-white">The Perfect Lemonade | Unsolved Cases ...</p>
+    </div>
+  </div>
+  <!-- Video Player Modal End -->
+  <footer class="text-white text-center text-lg-start bg-black">
+  <!-- Grid container -->
+  <div class=" p-4">
+    <!--Grid row-->
+    <div class="row mt-4">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-4">About company</h5>
+
+        <p>
+          I've sold cars & real estate, harvested vegetables, owned a service station and a men's wear store. I'm a
+          boiler-maker-welder by trade and I've built and raced speedway cars but none of that comes close to the
+          excitement and challenge of nurturing the perfect oyster in the bone-snapping cold, wet and wild waters of
+          Tasmania.
+        </p>
+
+        <p>
+
+          I've been patiently developing a unique farming technique; I've failed more often than I care to remember and
+          after some 30 odd years of blood, sweat and tears, I've finally nailed it.
+        </p>
+
+        <div class="mt-4">
+          <!-- Facebook -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-facebook-f"></i></a>
+          <!-- Dribbble -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-dribbble"></i></a>
+          <!-- Twitter -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-twitter"></i></a>
+          <!-- Google + -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-google-plus-g"></i></a>
+          <!-- Linkedin -->
+        </div>
+      </div>
+
+      <div class="contact-info d-flex flex-column align-items-center">
+        <div class="contact-item d-flex align-items-center mb-3">
+          <i class="fas fa-home"></i>
+          <span class="ms-2">Tasmania, +61 3 6248 9441, Australia</span>
+        </div>
+
+        <div class="contact-item d-flex align-items-center mb-3">
+          <i class="fas fa-envelope"></i>
+          <span class="ms-2">info@tasmanianoysterco.com.au</span>
+        </div>
+
+        <div class="contact-item d-flex align-items-center mb-3">
+          <i class="fas fa-phone"></i>
+          <span class="ms-2">+61 3 6248 9441</span>
+        </div>
+      </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <!-- Center the content within a parent div -->
+    <!-- Parent container with centered content -->
+    <div class=" text-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Opening hours</h5>
+
+          <!-- Opening hours list using flexbox for alignment -->
+          <div class="d-flex flex-column align-items-center">
+            <div class="d-flex justify-content-between w-100"> <!-- Flexbox to spread content -->
+              <span>Mon - Thu:</span>
+              <span>8am - 9pm</span>
+            </div>
+            <div class="d-flex justify-content-between w-100">
+              <span>Fri - Sat:</span>
+              <span>8am - 1am</span>
+            </div>
+            <div class="d-flex justify-content-between w-100">
+              <span>Sunday:</span>
+              <span>9am - 10pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2024 Copyright:
+    <a class="text-white">TasmanianOyster.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+  <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

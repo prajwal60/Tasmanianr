@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    <meta name="description" content="" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.png" />
+
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#fafafa" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#F4CA0C",
+              dark: "#27272A",
+              "dark-secondary": "#6c6d73",
+            },
+            fontFamily: {
+              cursive: ["cursive"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .dancing-script-header {
+        font-family: "Dancing Script", cursive;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      .roboto-mono-header {
+        font-family: "Avenir", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header
+      class="text-white fixed top-0 w-full z-50 transition-colors duration-300"
+      id="nav-bar-container"
+    >
+      <nav class="container mx-auto py-4 px-4 flex justify-end items-start">
+        <img src="{% static './images/hero-index-1.png' %}" alt="Logo" class="absolute w-24 left-4 h-36" />
+
+      <div class="space-x-9">
+        <a href="{% url "hello" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">Home</a>
+        <a href="{% url "about" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">About Us</a>
+        <a href="{% url "recepie" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">Our Recipe</a>
+        <a href="{% url "contact" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">Contact Us</a>
+        <a href="{% url "reserve" %}" class="text-dark-secondary hover:text-gray-600 pb-2 border-b-2 border-transparent nav-link">
+          Our Reserve
+        </a>
+
+        <!-- Search input -->
+        <div class="relative inline-block group">
+        <form action="result" method="get" class="relative inline">
+          <input type="text" placeholder="Search" name="search"
+                class="px-4 py-2 pr-10 text-sm bg-transparent border rounded-full border-inherit focus:outline-none focus:ring focus:border-blue-200"
+                id="search-input"/>
+          <i class="absolute transform -translate-y-1/2 fa-solid fa-magnifying-glass right-3 top-1/2"></i>
+        </form>
+
+        <!-- Search Result -->
+        <div
+          class="absolute right-0 hidden w-auto text-white transition-all opacity-0 top-full min-w-96 group-focus-within:opacity-100 group-focus-within:block">
+          <div class="bg-gray-700 rounded-md p-1.5 mt-1 divide-y divide-gray-500" id="search-results">
+            <span>No Search Result</span>
+          </div>
+        </div>
+        <!-- Search Result End -->
+      </div>
+        <!-- End of Search input -->
+      </div>
+      </nav>
+    </header>
+
+    <div class="z-0">
+      <!-- Start of Banner -->
+      <div
+        class="w-full h-[82vh] overflow-hidden relative flex items-center justify-center"
+      >
+        <div class="text-center text-7xl z-10 text-white">
+          <h1 class="dancing-script-header">Find More About Our Reserve</h1>
+        </div>
+
+        <div class="video-container absolute top-0 left-0 w-full">
+          <div
+            class="absolute top-0 left-0 bg-black w-full h-full opacity-20"
+          ></div>
+          <video
+            autoplay
+            class="w-full pointer-events-none banner-videos"
+            data-to="15"
+          >
+            <source
+              src="{% static './images/our-reserve-banner.mp4' %}"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+      </div>
+      <!-- End of Banner -->
+
+      <!-- Section 1 -->
+      <div class="mt-2 mb-20 flex flex-row justify-center">
+        <div class="inline-block w-[500px]">
+          <h2 class="roboto-mono-header text-dark text-center text-7xl">
+            OUR RESERVE
+          </h2>
+
+          <div class="flex justify-center items-center gap-5 my-2">
+            <div class="w-8 h-2 bg-primary rounded-md flex-1"></div>
+            <h3 class="roboto-mono-header text-2xl text-center">
+              TO YOUR PLATE
+            </h3>
+            <div class="w-8 h-2 bg-primary rounded-md flex-1"></div>
+          </div>
+
+          <p class="inline text-sm text-right font-medium">
+            If You're Looking For The Best Way To Cook Oysters, You've Come To
+            The Right Place! Our Oyster-Serving Section Provides You With A
+            Variety Of Cooking Methods To Choose From, Including Steaming,
+            Roasting, Grilling, And Even Frying. Whether You're A Seasoned Chef
+            Or A Beginner, We Have Something For Everyone. So Come And Explore
+            The World Of Oyster Cuisine With Us!
+          </p>
+        </div>
+      </div>
+      <!-- Section 1 -->
+
+      <!-- Section 2 -->
+      <div
+        class="mt-2 mb-28 flex-col flex md:flex-row justify-start items-start"
+      >
+        <div
+          class="mb-5 md:mb-0 w-3/6 relative mr-12"
+          style="box-shadow: 5px 5px 0 0 #f4ca0c"
+        >
+          <img
+            src="{% static './images/clint-patterson-SFe3ldnqVr0-unsplash.jpg' %}"
+            class="w-full object-contain"
+          />
+        </div>
+
+        <div class="w-full md:w-3/6 mr-12 md:pr-40">
+          <div class="relative">
+            <div
+              class="h-3/6 bg-primary opacity-30 absolute top-1.5 -left-12 -z-10"
+              style="width: calc(100% + 3rem)"
+            ></div>
+            <h2 class="roboto-mono-header text-dark text-7xl">BOMMER BAY</h2>
+          </div>
+
+          <p class="text-sm mt-8 mb-8 font-medium leading-loose">
+            If You're Looking For The Best Way To Cook Oysters, You've Come To
+            The Right Place! Our Oyster-Serving Section Provides You With A
+            Variety Of Cooking Methods To Choose From, Including Steaming,
+            Roasting, Grilling, And Even Frying. Whether You're A Seasoned Chef
+            Or A Beginner, We Have Something For Everyone. So Come And Explore
+            The World Of Oyster Cuisine With Us!
+          </p>
+
+          <button 
+          
+            type="button"
+            class="text-2xl bg-primary pl-8 pr-20 py-3 rounded-full relative group"
+          >
+            <a href="{% url "boomer" %}"><span >See More</span></a>
+
+            <div
+              class="inline absolute bg-gray-100 rounded-full py-2.5 px-5 top-0.5 right-0.5 group-hover:px-4 transition-all"
+            >
+              <i class="fa-solid fa-circle-chevron-right"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+      <!-- Section 2 -->
+
+      <!-- Section 3 -->
+      <div
+        class="mt-2 mb-28 flex-col flex md:flex-row justify-start items-start"
+      >
+        <div class="w-full md:w-3/6 ml-12 md:pl-40">
+          <div class="relative">
+            <div
+              class="h-3/6 bg-primary opacity-30 absolute top-1.5 -right-12 -z-10"
+              style="width: calc(100% + 3rem)"
+            ></div>
+            <h2 class="roboto-mono-header text-dark text-7xl">DUCK BAY</h2>
+          </div>
+
+          <p class="text-sm mt-6 mb-8 font-medium leading-loose">
+            If You're Looking For The Best Way To Cook Oysters, You've Come To
+            The Right Place! Our Oyster-Serving Section Provides You With A
+            Variety Of Cooking Methods To Choose From, Including Steaming,
+            Roasting, Grilling, And Even Frying. Whether You're A Seasoned Chef
+            Or A Beginner, We Have Something For Everyone. So Come And Explore
+            The World Of Oyster Cuisine With Us!
+          </p>
+
+          <button
+            type="button"
+            class="text-2xl bg-primary pl-8 pr-20 py-3 rounded-full relative group"
+          >
+            <a href="{% url "duckbay" %}"><span >See More</span></a>
+
+            <div
+              class="inline absolute bg-gray-100 rounded-full py-2.5 px-5 top-0.5 right-0.5 group-hover:px-4 transition-all"
+            >
+              <i class="fa-solid fa-circle-chevron-right"></i>
+            </div>
+          </button>
+        </div>
+
+        <div
+          class="mb-5 md:mb-0 w-3/6 relative ml-12"
+          style="box-shadow: -5px 5px 0 0 #f4ca0c"
+        >
+          <img
+            src="{% static '/images/our-reserve-duck-bay.jpg' %}"
+            class="w-full object-contain"
+          />
+        </div>
+      </div>
+      <!-- Section 3 -->
+
+      <!-- Section 4 -->
+      <div
+        class="mt-2 mb-28 flex-col flex md:flex-row justify-start items-start"
+      >
+        <div
+          class="mb-5 md:mb-0 w-3/6 relative mr-12"
+          style="box-shadow: 5px 5px 0 0 #f4ca0c"
+        >
+          <img
+            src="{% static '/images/our-reserve-pipeclay-lagoon.jpg' %}"
+            class="w-full object-contain"
+          />
+        </div>
+
+        <div class="w-full md:w-3/6 mr-12 md:pr-40">
+          <div class="relative">
+            <div
+              class="h-3/6 bg-primary opacity-30 absolute top-1.5 -left-12 -z-10"
+              style="width: calc(100% + 3rem)"
+            ></div>
+            <h2 class="roboto-mono-header text-dark text-6xl">
+              PIPECLAY LAGOON
+            </h2>
+          </div>
+
+          <p class="text-sm mt-6 mb-8 font-medium leading-loose">
+            If You're Looking For The Best Way To Cook Oysters, You've Come To
+            The Right Place! Our Oyster-Serving Section Provides You With A
+            Variety Of Cooking Methods To Choose From, Including Steaming,
+            Roasting, Grilling, And Even Frying. Whether You're A Seasoned Chef
+            Or A Beginner, We Have Something For Everyone. So Come And Explore
+            The World Of Oyster Cuisine With Us!
+          </p>
+
+          <button
+            type="button"
+            class="text-2xl bg-primary pl-8 pr-20 py-3 rounded-full relative group"
+          >
+            <a href="{% url "pipelay" %}"><span >See More</span></a>
+
+            <div
+              class="inline absolute bg-gray-100 rounded-full py-2.5 px-5 top-0.5 right-0.5 group-hover:px-4 transition-all"
+            >
+              <i class="fa-solid fa-circle-chevron-right"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+      <!-- Section 4 -->
+
+      <!-- Section 3 -->
+      
+    </div>
+ <!-- Video Player Modal -->
+  <div class="fixed inset-0 z-50 video-player-container !hidden">
+    <div class="absolute inset-0 z-10 bg-black opacity-60 video-player-overlay"></div>
+    <div class="flex flex-col items-center justify-center w-full h-full">
+      <iframe width="560" height="315" id="video-player-embed" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="z-10 rounded-md"></iframe>
+
+      <p class="z-10 mx-auto mt-2 text-xs text-white w-[540px]" id="video-player-label"></p>
+    </div>
+  </div>
+  <footer class="text-white text-center text-lg-start bg-black">
+  <!-- Grid container -->
+  <div class=" p-4">
+    <!--Grid row-->
+    <div class="row mt-4">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-4">About company</h5>
+
+        <p>
+          I've sold cars & real estate, harvested vegetables, owned a service station and a men's wear store. I'm a
+          boiler-maker-welder by trade and I've built and raced speedway cars but none of that comes close to the
+          excitement and challenge of nurturing the perfect oyster in the bone-snapping cold, wet and wild waters of
+          Tasmania.
+        </p>
+
+        <p>
+
+          I've been patiently developing a unique farming technique; I've failed more often than I care to remember and
+          after some 30 odd years of blood, sweat and tears, I've finally nailed it.
+        </p>
+
+        <div class="mt-4">
+          <!-- Facebook -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-facebook-f"></i></a>
+          <!-- Dribbble -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-dribbble"></i></a>
+          <!-- Twitter -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-twitter"></i></a>
+          <!-- Google + -->
+          <a type="button" class="btn btn-floating btn-light btn-lg"><i class="fab fa-google-plus-g"></i></a>
+          <!-- Linkedin -->
+        </div>
+      </div>
+
+      <div class="contact-info d-flex flex-column align-items-center">
+        <div class="contact-item d-flex align-items-center mb-3">
+          <i class="fas fa-home"></i>
+          <span class="ms-2">Tasmania, +61 3 6248 9441, Australia</span>
+        </div>
+
+        <div class="contact-item d-flex align-items-center mb-3">
+          <i class="fas fa-envelope"></i>
+          <span class="ms-2">info@tasmanianoysterco.com.au</span>
+        </div>
+
+        <div class="contact-item d-flex align-items-center mb-3">
+          <i class="fas fa-phone"></i>
+          <span class="ms-2">+61 3 6248 9441</span>
+        </div>
+      </div>
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <!-- Center the content within a parent div -->
+    <!-- Parent container with centered content -->
+    <div class=" text-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Opening hours</h5>
+
+          <!-- Opening hours list using flexbox for alignment -->
+          <div class="d-flex flex-column align-items-center">
+            <div class="d-flex justify-content-between w-100"> <!-- Flexbox to spread content -->
+              <span>Mon - Thu:</span>
+              <span>8am - 9pm</span>
+            </div>
+            <div class="d-flex justify-content-between w-100">
+              <span>Fri - Sat:</span>
+              <span>8am - 1am</span>
+            </div>
+            <div class="d-flex justify-content-between w-100">
+              <span>Sunday:</span>
+              <span>9am - 10pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2024 Copyright:
+    <a class="text-white">TasmanianOyster.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+  <!-- Video Player Modal End -->
+    <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>
